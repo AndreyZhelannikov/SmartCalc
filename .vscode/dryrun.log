@@ -1,0 +1,7 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/andreyzhelannikov/SmartCalc'
+mkdir -p objs
+gcc -c -g -Wall -Wextra `pkg-config --cflags gtk+-3.0`  ./main.c -o objs/main.o
+gcc -o SmartCalc ./objs/main.o `pkg-config --libs gtk+-3.0`
+make: Leaving directory `/Users/andreyzhelannikov/SmartCalc'
+ 

@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Sat Jun 11 11:43:35 2022
+# Make data base, printed on Sat Jun 11 12:04:26 2022
 
 # Variables
 
@@ -41,7 +41,7 @@ VSCODE_NLS_CONFIG = {"locale":"en-gb","availableLanguages":{},"_languagePackSupp
 # environment
 _ = /usr/bin/make
 # makefile (from `Makefile', line 6)
-CFLAGS = -g -Wall -Wextra $(GTK_CFLAGS) 
+CFLAGS = -std=c11 -g -Wall -Wextra $(GTK_CFLAGS) 
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # makefile (from `Makefile', line 9)
@@ -200,12 +200,12 @@ GTK_LIBS = `pkg-config --libs gtk+-3.0`
 objs/main.o: ./main.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `/main'
-#  Last modified 2022-06-11 11:37:06
+#  Last modified 2022-06-11 12:03:52
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 22):
+#  commands to execute (from `Makefile', line 23):
 	$(CC) -c $(CFLAGS) $< -o $@
 	
 
@@ -221,7 +221,7 @@ all: SmartCalc
 # Not a target:
 ./main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-11 11:37:06
+#  Last modified 2022-06-11 11:55:22
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -236,14 +236,13 @@ all: SmartCalc
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-11 11:35:29
+#  Last modified 2022-06-11 12:04:20
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
- 
 main.h:
 #  Implicit rule search has been done.
 #  Last modified 2022-06-11 11:34:47
@@ -252,23 +251,24 @@ main.h:
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-SmartCalc: objs objs/main.o main.h
+SmartCalc: objs objs/main.o main.h Makefile
 #  Implicit rule search has not been done.
-#  Last modified 2022-06-11 11:37:07
+#  Last modified 2022-06-11 12:04:20
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 #  commands to execute (from `Makefile', line 19):
 	$(CC) -o $(TARGET) $(OBJS) $(GTK_LIBS)
+	./SmartCalc
 	
 
 objs:
 #  Implicit rule search has not been done.
-#  Last modified 2022-06-11 11:37:06
+#  Last modified 2022-06-11 12:03:52
 #  File has been updated.
 #  Successfully updated.
-#  commands to execute (from `Makefile', line 25):
+#  commands to execute (from `Makefile', line 26):
 	$(MK) objs
 	
 
@@ -287,12 +287,12 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 28):
+#  commands to execute (from `Makefile', line 29):
 	$(RM) -r $(OBJ_DIR)
 	
 
 # files hash-table stats:
-# Load=11/1024=1%, Rehash=0, Collisions=0/31=0%
+# Load=11/1024=1%, Rehash=0, Collisions=0/32=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -304,6 +304,6 @@ clean:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sat Jun 11 11:43:35 2022
+# Finished Make data base on Sat Jun 11 12:04:26 2022
 
  

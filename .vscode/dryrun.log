@@ -1,6 +1,11 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/andreyzhelannikov/SmartCalc'
-make: Nothing to be done for `all'.
- 
+mkdir -p objs
+gcc -c -std=c11 -g -Wall -Wextra `pkg-config --cflags gtk+-3.0`  ./calc.c -o objs/calc.o
+gcc -c -std=c11 -g -Wall -Wextra `pkg-config --cflags gtk+-3.0`  ./get_data.c -o objs/get_data.o
+gcc -c -std=c11 -g -Wall -Wextra `pkg-config --cflags gtk+-3.0`  ./main.c -o objs/main.o
+gcc -c -std=c11 -g -Wall -Wextra `pkg-config --cflags gtk+-3.0`  ./converting.c -o objs/converting.o
+gcc -o SmartCalc ./objs/calc.o ./objs/get_data.o ./objs/main.o ./objs/converting.o `pkg-config --libs gtk+-3.0`
+./SmartCalc
 make: Leaving directory `/Users/andreyzhelannikov/SmartCalc'
  

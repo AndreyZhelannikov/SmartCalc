@@ -1,7 +1,6 @@
 #ifndef ABOBA
 #define ABOBA
 
-#include <gtk/gtk.h>
 #include <locale.h>
 #include <math.h>
 #include <stdio.h>

@@ -46,33 +46,49 @@ double calculate_value(lyxems_t *lyxems, int lyxems_cnt) {
             result = apply_function(lyxems[i].token, result);
         }
     }
+    printf("RESULT INSIDE : %lf\n", result);
     return result;
 }
 
 double apply_function(int tok, double n) {
     double result = 0;
 
-    if (tok == COS) result = cos(n);
-    if (tok == SIN) result = sin(n);
-    if (tok == TAN) result = tan(n);
-    if (tok == ACOS) result = acos(n);
-    if (tok == ASIN) result = asin(n);
-    if (tok == ATAN) result = atan(n);
-    if (tok == SQRT) result = sqrt(n);
-    if (tok == LN) result = log(n);
-    if (tok == LOG) result = log10(n);
+    if (tok == COS)
+        result = cos(n);
+    if (tok == SIN)
+        result = sin(n);
+    if (tok == TAN)
+        result = tan(n);
+    if (tok == ACOS)
+        result = acos(n);
+    if (tok == ASIN)
+        result = asin(n);
+    if (tok == ATAN)
+        result = atan(n);
+    if (tok == SQRT)
+        result = sqrt(n);
+    if (tok == LN)
+        result = log(n);
+    if (tok == LOG)
+        result = log10(n);
 
     return result;
 }
 
 double do_operation(int tok, double a, double b) {
     double result = 0;
-    if (tok == PLUS) result = a + b;
-    if (tok == MINUS) result = a - b;
-    if (tok == MUL) result = a * b;
-    if (tok == DIV) result = a / b;
-    if (tok == POW) result = pow(a, b);
-    if (tok == MOD) result = modf(a, &b);
+    if (tok == PLUS)
+        result = a + b;
+    if (tok == MINUS)
+        result = a - b;
+    if (tok == MUL)
+        result = a * b;
+    if (tok == DIV)
+        result = a / b;
+    if (tok == POW)
+        result = pow(a, b);
+    if (tok == MOD)
+        result = modf(a, &b);
     return result;
 }
 
@@ -85,6 +101,10 @@ int is_function(int tok) {
            tok == SQRT || tok == LN || tok == LOG;
 }
 
-int is_unary_binary(int tok) { return tok == PLUS || tok == MINUS; }
+int is_unary_binary(int tok) {
+    return tok == PLUS || tok == MINUS;
+}
 
-int is_number(int tok) { return tok == NUMBER || tok == PLUS_X || tok == MINUS_X; }
+int is_number(int tok) {
+    return tok == NUMBER || tok == PLUS_X || tok == MINUS_X;
+}

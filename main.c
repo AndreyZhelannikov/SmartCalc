@@ -1,8 +1,6 @@
 #include "main.h"
 
-void smart_calc(int argc, char **argv, int *code);
 void print_rectangle(int x, int y);
-void open_window(int argc, char **argv);
 
 // int main(int argc, char **argv) {
 //     int code = 0;
@@ -14,13 +12,14 @@ void open_window(int argc, char **argv);
 //     return 0;
 // }
 
-void smart_calc(int argc, char **argv, int *code) {
+double smart_calc(char *input) {
+    int code = OK;
     double result = 0;
-    char input[512] = {0};
+    // char input[512] = {0};
     lyxems_t lyxems[512] = {0};
     lyxems_t polish[512] = {0};
 
-    get_input_from_stdin(input, code);
+    // get_input_from_stdin(input, &code);
     int lyxems_cnt = input_string_converting(input, lyxems);
 
     print_lyxems(lyxems, lyxems_cnt);
@@ -30,7 +29,9 @@ void smart_calc(int argc, char **argv, int *code) {
     print_lyxems(polish, polish_cnt);
 
     result = calculate_value(polish, polish_cnt);
-    printf("RESULT : %lf\n", result);
+    printf("RESULT INSIDE : %lf\n", result);
+    return result;
+    // printf("RESULT : %lf\n", result);
 }
 
 void print_lyxems(lyxems_t *lyxems, int len) {

@@ -1,9 +1,5 @@
 #include "main.h"
 
-void validation(char *input, int *code);
-void validate_symbols(char *input, int *code);
-void validate_lyxems(char *input, int *code);
-
 void get_input_from_stdin(char *input, int *code) {
     // Bracket validation
     // fun() brackets validations

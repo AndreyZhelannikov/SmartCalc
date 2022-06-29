@@ -2,7 +2,7 @@
 CC=gcc
 TARGET=SmartCalc
 TEST_TARGET=test
-CFLAGS=-std=c11 -g -Wall -Wextra $(GTK_CFLAGS) #-Werror
+CFLAGS=-std=c11 -g -Wall -Wextra -fsanitize=address #-Werror
 
 TARGET_DIR=.
 TEST_DIR=./tests
@@ -25,7 +25,8 @@ $(TARGET) : $(OBJ_DIR) $(OBJS) $(INCLUDES) Makefile
 	./SmartCalc
 
 $(TEST_TARGET) : $(OBJ_DIR) $(OBJS) $(TEST_OBJS) $(INCLUDES) $(TEST_INCLUDES) Makefile
-	$(CC) -o $(TEST_TARGET) $(OBJS) $(TEST_OBJS) $(TEST_LIBS) 
+	$(CC) -o $(TEST_TARGET) -fsanitize=address $(OBJS) $(TEST_OBJS) $(TEST_LIBS) 
+	./test
 
 $(OBJS) : $(OBJ_DIR)%.o : $(TARGET_DIR)%.c
 	$(CC) -c $(CFLAGS) $< -o $@

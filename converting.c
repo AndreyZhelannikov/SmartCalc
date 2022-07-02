@@ -2,13 +2,14 @@
 
 int input_string_converting(char *data, lyxems_t *lyxems) {
     int lyxems_cnt = 0;
-    for (; *data; lyxems_cnt++) {
+    while (*data) {
         if (*data == ' ') {
             data += 1;
             continue;
         }
         string_to_lyxem(data, lyxems + lyxems_cnt);
         shift_by_token_length(&data, lyxems[lyxems_cnt].token);
+        lyxems_cnt++;
     }
     check_unary_operations(lyxems, &lyxems_cnt);
 
@@ -71,7 +72,10 @@ void shift_by_token_length(char **data, int token) {
     if (token == 0) {
         while (isdigit(**data) || **data == '.') *data += 1;
     } else if (token >= 1 && token <= 13) {
-        *data += 1;
+        if (token == MOD)
+            *data += 3;
+        else
+            *data += 1;
     } else if (token == 14) {
         *data += 2;
     } else if (token >= 15 && token <= 18) {

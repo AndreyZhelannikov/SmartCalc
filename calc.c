@@ -33,62 +33,63 @@ int dijkstra_algorithm(lyxems_t *lyxems, int lyxems_cnt, lyxems_t *polish) {
     return polish_ptr;
 }
 
-double calculate_value(lyxems_t *lyxems, int lyxems_cnt) {
-    double result = lyxems[0].number;
-    double tmp = 0;
+// double calculate_value(lyxems_t *lyxems, int lyxems_cnt) {
+//     double result = lyxems[0].number;
+//     double tmp = 0;
 
+//     for (int i = 1; i < lyxems_cnt; ++i) {
+//         if (is_number(lyxems[i].token)) {
+//             tmp = lyxems[i].number;
+//         } else if (is_operator(lyxems[i].token)) {
+//             result = do_operation(lyxems[i].token, result, tmp);
+//         } else if (is_function(lyxems[i].token)) {
+//             result = apply_function(lyxems[i].token, result);
+//         }
+//     }
+//     printf("RESULT INSIDE : %lf\n", result);
+//     return result;
+// }
+double calculate_value(lyxems_t *lyxems, int lyxems_cnt) {
+    double stack[256] = {lyxems[0].number};
+    int sp = 1;
     for (int i = 1; i < lyxems_cnt; ++i) {
-        if (is_number(lyxems[i].token)) {
-            tmp = lyxems[i].number;
-        } else if (is_operator(lyxems[i].token)) {
-            result = do_operation(lyxems[i].token, result, tmp);
+        if (lyxems[i].token == NUMBER) {
+            stack[sp] = lyxems[i].number;
+            sp++;
         } else if (is_function(lyxems[i].token)) {
-            result = apply_function(lyxems[i].token, result);
+            stack[sp - 1] = apply_function(lyxems[i].token, stack[sp - 1]);
+        } else if (is_operator(lyxems[i].token)) {
+            stack[sp - 2] = do_operation(lyxems[i].token, stack[sp - 2], stack[sp - 1]);
+            sp--;
         }
     }
-    printf("RESULT INSIDE : %lf\n", result);
-    return result;
+    return stack[sp - 1];
 }
 
 double apply_function(int tok, double n) {
     double result = 0;
 
-    if (tok == COS)
-        result = cos(n);
-    if (tok == SIN)
-        result = sin(n);
-    if (tok == TAN)
-        result = tan(n);
-    if (tok == ACOS)
-        result = acos(n);
-    if (tok == ASIN)
-        result = asin(n);
-    if (tok == ATAN)
-        result = atan(n);
-    if (tok == SQRT)
-        result = sqrt(n);
-    if (tok == LN)
-        result = log(n);
-    if (tok == LOG)
-        result = log10(n);
+    if (tok == COS) result = cos(n);
+    if (tok == SIN) result = sin(n);
+    if (tok == TAN) result = tan(n);
+    if (tok == ACOS) result = acos(n);
+    if (tok == ASIN) result = asin(n);
+    if (tok == ATAN) result = atan(n);
+    if (tok == SQRT) result = sqrt(n);
+    if (tok == LN) result = log(n);
+    if (tok == LOG) result = log10(n);
 
     return result;
 }
 
 double do_operation(int tok, double a, double b) {
     double result = 0;
-    if (tok == PLUS)
-        result = a + b;
-    if (tok == MINUS)
-        result = a - b;
-    if (tok == MUL)
-        result = a * b;
-    if (tok == DIV)
-        result = a / b;
-    if (tok == POW)
-        result = pow(a, b);
-    if (tok == MOD)
-        result = modf(a, &b);
+    if (tok == PLUS) result = a + b;
+    if (tok == MINUS) result = a - b;
+    if (tok == MUL) result = a * b;
+    if (tok == DIV) result = a / b;
+    if (tok == POW) result = pow(a, b);
+    if (tok == MOD) result = modf(a, &b);
     return result;
 }
 
@@ -101,10 +102,6 @@ int is_function(int tok) {
            tok == SQRT || tok == LN || tok == LOG;
 }
 
-int is_unary_binary(int tok) {
-    return tok == PLUS || tok == MINUS;
-}
+int is_unary_binary(int tok) { return tok == PLUS || tok == MINUS; }
 
-int is_number(int tok) {
-    return tok == NUMBER || tok == PLUS_X || tok == MINUS_X;
-}
+int is_number(int tok) { return tok == NUMBER || tok == PLUS_X || tok == MINUS_X; }

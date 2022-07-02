@@ -84,12 +84,12 @@ double apply_function(int tok, double n) {
 
 double do_operation(int tok, double a, double b) {
     double result = 0;
-    if (tok == PLUS) result = b + a;
-    if (tok == MINUS) result = b - a;
-    if (tok == MUL) result = b * a;
-    if (tok == DIV) result = b / a;
-    if (tok == POW) result = pow(b, a);
-    if (tok == MOD) result = fmod(b, a);
+    if (tok == PLUS) result = a + b;
+    if (tok == MINUS) result = a - b;
+    if (tok == MUL) result = a * b;
+    if (tok == DIV) result = a / b;
+    if (tok == POW) result = pow(a, b);
+    if (tok == MOD) result = fmod(a, b);
     return result;
 }
 

@@ -9,7 +9,7 @@ list_operator = [
     '-',
     '/',
     '**',
-    #'mod',
+    'mod',
 ]
 
 list_func = [

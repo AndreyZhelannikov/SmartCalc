@@ -2,17 +2,58 @@
 #include "ui_calculator.h"
 #include <cstring>
 
-
+#define DELTA 20000
 
 void Calculator::on_enter_clicked()
 {
     QString input = ui->Display->text();
-    char c_input[512];
+    char c_input[512] = {0};
     strncpy(c_input, qPrintable(input), 255);
-    double result = smart_calc(c_input);
-    QString result_string = QString::number(result);
-    ui->ResultDisplay->setText("= " + result_string);
-//    qDebug() << result;
+
+    double x_min = ui->x_min_box->value();
+    double x_max = ui->x_max_box->value();
+    double y_min = ui->y_min_box->value();
+    double y_max = ui->y_min_box->value();
+
+    int graph = 0;
+    int len = strlen(c_input);
+    for (int i = 0; i < len; ++i) {
+        if (c_input[i] == 'x')  graph = 1;
+    }
+    if (graph) {
+        QVector<double> x(DELTA + 1), y(DELTA + 1);
+        int j = 0;
+        for (double i = x_min; i <= x_max; i += (x_max - x_min) / DELTA) {
+            x[j] = i;
+            y[j] = smart_calc(c_input, i);
+            j++;
+        }
+        ui->ResultDisplay->setText("");
+        ui->plot->addGraph();
+        ui->plot->graph(0)->setData(x, y);
+        ui->plot->replot();
+    } else {
+        double result = smart_calc(c_input, 0);
+        QString result_string = QString::number(result);
+        ui->ResultDisplay->setText("= " + result_string);
+        ui->plot->clearGraphs();
+        ui->plot->replot();
+    }
+}
+
+void Calculator::on_mod_clicked()
+{
+    clicked_text_add(" mod ");
+}
+
+void Calculator::on_x_button_clicked()
+{
+    clicked_text_add("x");
+}
+
+void Calculator::on_pow_clicked()
+{
+    clicked_text_add("^");
 }
 
 void Calculator::clicked_text_add(QString toAdd)
@@ -111,18 +152,6 @@ void Calculator::on_br_r_clicked()
 {
     clicked_text_add(")");
 }
-
-void Calculator::on_arrow_l_clicked()
-{
-    ui->Display->cursorBackward(0 , 1);
-}
-
-
-void Calculator::on_arrow_r_clicked()
-{
-    ui->Display->cursorForward(0 , 1);
-}
-
 
 void Calculator::on_back_clicked()
 {

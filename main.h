@@ -53,7 +53,7 @@ enum {
     INVALID_LYXEMS = 3,
 };
 
-double smart_calc(char *input);
+double smart_calc(char *input, double x_value);
 
 double calculate_value(lyxems_t *lyxems, int lyxems_cnt);
 double do_operation(int tok, double a, double b);

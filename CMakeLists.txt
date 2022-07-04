@@ -27,6 +27,8 @@ set(PROJECT_SOURCES
         main.c
         colors.h
         main.h
+        qcustomplot.cpp
+        qcustomplot.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

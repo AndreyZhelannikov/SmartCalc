@@ -12,7 +12,7 @@
 //     return 0;
 // }
 
-double smart_calc(char *input) {
+double smart_calc(char *input, double x_value) {
     int code = OK;
     double result = 0;
     // char input[512] = {0};
@@ -27,7 +27,15 @@ double smart_calc(char *input) {
     int polish_cnt = dijkstra_algorithm(lyxems, lyxems_cnt, polish);
 
 //    print_lyxems(polish, polish_cnt);
-
+    for (int i = 0; i < lyxems_cnt; ++i) {
+        if (polish[i].token == PLUS_X) {
+            polish[i].token = NUMBER;
+            polish[i].number = x_value;
+        } else if (polish[i].token == MINUS_X) {
+            polish[i].token = NUMBER;
+            polish[i].number = -x_value;
+        }
+    }
     result = calculate_value(polish, polish_cnt);
     return result;
     // printf("RESULT : %lf\n", result);

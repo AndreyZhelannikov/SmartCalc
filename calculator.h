@@ -2,6 +2,7 @@
 #define CALCULATOR_H
 
 #include <QMainWindow>
+#include "qcustomplot.h"
 extern "C" {
 #include "main.h"
 }
@@ -51,10 +52,6 @@ void on_three_clicked();
 
     void on_br_r_clicked();
 
-    void on_arrow_l_clicked();
-
-    void on_arrow_r_clicked();
-
     void on_back_clicked();
 
     void on_log_clicked();
@@ -78,6 +75,23 @@ void on_three_clicked();
     void on_enter_clicked();
 
     void on_dot_clicked();
+
+    void on_x_max_box_valueChanged(double arg1);
+
+    void on_x_min_box_valueChanged(double arg1);
+
+    void on_y_min_box_valueChanged(double arg1);
+
+    void on_y_max_box_valueChanged(double arg1);
+
+
+    void on_mod_clicked();
+
+    void on_pow_clicked();
+
+    void on_x_button_clicked();
+
+    void on_reset_clicked();
 
 private:
     Ui::Calculator *ui;

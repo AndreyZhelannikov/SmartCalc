@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>Calculator</class>
  <widget class="QMainWindow" name="Calculator">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -9,6 +12,24 @@
     <width>600</width>
     <height>868</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>600</width>
+    <height>868</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>600</width>
+    <height>868</height>
+   </size>
   </property>
   <property name="palette">
    <palette>
@@ -144,8 +165,14 @@
 	border:none;
 }</string>
     </property>
+    <property name="text">
+     <string/>
+    </property>
     <property name="readOnly">
-     <bool>false</bool>
+     <bool>true</bool>
+    </property>
+    <property name="placeholderText">
+     <string>0.00</string>
     </property>
     <property name="cursorMoveStyle">
      <enum>Qt::LogicalMoveStyle</enum>
@@ -171,21 +198,25 @@
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/enter.png);
-    background-repeat: no-repeat;
+	border-style: none;
+    	border-width: 1px;
+    	border-color: rgb(33, 61, 168);
+	border-radius: 2px;
+	background-color:rgb(52, 94, 255);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/enterd.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: none;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(38, 70, 194);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>⏎</string>
     </property>
     <property name="iconSize">
      <size>
@@ -194,7 +225,7 @@ QPushButton:pressed {
      </size>
     </property>
     <property name="shortcut">
-     <string>Return</string>
+     <string>=</string>
     </property>
     <property name="checkable">
      <bool>false</bool>
@@ -238,27 +269,40 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/delete.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(163, 163, 163);
+	border-radius: 2px;
+	background-color:rgb(200, 200, 200);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/deleted.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(180, 180, 180);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>⌫</string>
     </property>
     <property name="shortcut">
      <string>Backspace</string>
     </property>
+    <property name="autoRepeat">
+     <bool>false</bool>
+    </property>
+    <property name="autoRepeatDelay">
+     <number>100</number>
+    </property>
+    <property name="autoRepeatInterval">
+     <number>50</number>
+    </property>
    </widget>
-   <widget class="QPushButton" name="arrow_r">
+   <widget class="QPushButton" name="mod">
     <property name="geometry">
      <rect>
       <x>539</x>
@@ -272,24 +316,31 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/arrow_right.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(215, 215, 215);
+	border-radius: 2px;
+	background-color:rgb(252, 252, 252);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/arrow_rightd.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(232, 232, 232);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>%</string>
+    </property>
+    <property name="shortcut">
+     <string>%</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="arrow_l">
+   <widget class="QPushButton" name="pow">
     <property name="geometry">
      <rect>
       <x>478</x>
@@ -303,21 +354,28 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/arrow_left.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(215, 215, 215);
+	border-radius: 2px;
+	background-color:rgb(252, 252, 252);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/arrow_leftd.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(232, 232, 232);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>^</string>
+    </property>
+    <property name="shortcut">
+     <string>^</string>
     </property>
    </widget>
    <widget class="QPushButton" name="plus">
@@ -334,27 +392,31 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/plus.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(215, 215, 215);
+	border-radius: 2px;
+	background-color:rgb(252, 252, 252);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/plusd.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(232, 232, 232);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>+</string>
     </property>
     <property name="shortcut">
      <string>+</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="mod">
+   <widget class="QPushButton" name="x_button">
     <property name="geometry">
      <rect>
       <x>332</x>
@@ -368,21 +430,28 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: 
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(215, 215, 215);
+	border-radius: 2px;
+	background-color:rgb(252, 252, 252);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: 
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(232, 232, 232);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>x</string>
+    </property>
+    <property name="shortcut">
+     <string>X</string>
     </property>
    </widget>
    <widget class="QPushButton" name="dot">
@@ -399,21 +468,28 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/dot.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(163, 163, 163);
+	border-radius: 2px;
+	background-color:rgb(200, 200, 200);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/dotd.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(180, 180, 180);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>.</string>
+    </property>
+    <property name="shortcut">
+     <string>.</string>
     </property>
    </widget>
    <widget class="QPushButton" name="zero">
@@ -430,21 +506,28 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/zero.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(163, 163, 163);
+	border-radius: 2px;
+	background-color:rgb(200, 200, 200);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/zerod.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(180, 180, 180);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>0</string>
+    </property>
+    <property name="shortcut">
+     <string>0</string>
     </property>
    </widget>
    <widget class="QPushButton" name="atan">
@@ -461,21 +544,28 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/atan.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(215, 215, 215);
+	border-radius: 2px;
+	background-color:rgb(252, 252, 252);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/atand.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(232, 232, 232);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>atan</string>
+    </property>
+    <property name="shortcut">
+     <string>A, T, A, N</string>
     </property>
    </widget>
    <widget class="QPushButton" name="acos">
@@ -492,21 +582,28 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/acos.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(215, 215, 215);
+	border-radius: 2px;
+	background-color:rgb(252, 252, 252);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/acosd.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(232, 232, 232);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>acos</string>
+    </property>
+    <property name="shortcut">
+     <string>A, C, O, S</string>
     </property>
    </widget>
    <widget class="QPushButton" name="asin">
@@ -523,21 +620,28 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/asin.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(215, 215, 215);
+	border-radius: 2px;
+	background-color:rgb(252, 252, 252);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/asind.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(232, 232, 232);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>asin</string>
+    </property>
+    <property name="shortcut">
+     <string>A, S, I, N</string>
     </property>
    </widget>
    <widget class="QPushButton" name="minus">
@@ -554,21 +658,25 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/minus.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(215, 215, 215);
+	border-radius: 2px;
+	background-color:rgb(252, 252, 252);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/minusd.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(232, 232, 232);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>−</string>
     </property>
     <property name="shortcut">
      <string>-</string>
@@ -588,21 +696,25 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/mul.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(215, 215, 215);
+	border-radius: 2px;
+	background-color:rgb(252, 252, 252);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/muld.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(232, 232, 232);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>×</string>
     </property>
     <property name="shortcut">
      <string>*</string>
@@ -622,21 +734,25 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/div.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(215, 215, 215);
+	border-radius: 2px;
+	background-color:rgb(252, 252, 252);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/divd.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(232, 232, 232);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>÷</string>
     </property>
     <property name="shortcut">
      <string>/</string>
@@ -656,21 +772,25 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/nine.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(163, 163, 163);
+	border-radius: 2px;
+	background-color:rgb(200, 200, 200);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/nined.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(180, 180, 180);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>9</string>
     </property>
     <property name="shortcut">
      <string>9</string>
@@ -690,21 +810,25 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/six.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(163, 163, 163);
+	border-radius: 2px;
+	background-color:rgb(200, 200, 200);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/sixd.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(180, 180, 180);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>6</string>
     </property>
     <property name="shortcut">
      <string>6</string>
@@ -724,21 +848,25 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/three.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(163, 163, 163);
+	border-radius: 2px;
+	background-color:rgb(200, 200, 200);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/threed.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(180, 180, 180);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>3</string>
     </property>
     <property name="shortcut">
      <string>3</string>
@@ -758,21 +886,25 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/two.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(163, 163, 163);
+	border-radius: 2px;
+	background-color:rgb(200, 200, 200);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/twod.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(180, 180, 180);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>2</string>
     </property>
     <property name="shortcut">
      <string>2</string>
@@ -792,21 +924,25 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/five.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(163, 163, 163);
+	border-radius: 2px;
+	background-color:rgb(200, 200, 200);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/fived.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(180, 180, 180);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>5</string>
     </property>
     <property name="shortcut">
      <string>5</string>
@@ -826,21 +962,25 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/eight.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(163, 163, 163);
+	border-radius: 2px;
+	background-color:rgb(200, 200, 200);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/eightd.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(180, 180, 180);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>8</string>
     </property>
     <property name="shortcut">
      <string>8</string>
@@ -860,21 +1000,25 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/one.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(163, 163, 163);
+	border-radius: 2px;
+	background-color:rgb(200, 200, 200);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/oned.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(180, 180, 180);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string notr="true"/>
+     <string notr="true">1</string>
     </property>
     <property name="shortcut">
      <string>1</string>
@@ -894,21 +1038,25 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/four.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(163, 163, 163);
+	border-radius: 2px;
+	background-color:rgb(200, 200, 200);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/fourd.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(180, 180, 180);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>4</string>
     </property>
     <property name="shortcut">
      <string>4</string>
@@ -928,21 +1076,25 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/seven.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(163, 163, 163);
+	border-radius: 2px;
+	background-color:rgb(200, 200, 200);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/sevend.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(180, 180, 180);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>7</string>
     </property>
     <property name="shortcut">
      <string>7</string>
@@ -962,21 +1114,25 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/tan.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(215, 215, 215);
+	border-radius: 2px;
+	background-color:rgb(252, 252, 252);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/tand.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(232, 232, 232);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>tan</string>
     </property>
    </widget>
    <widget class="QPushButton" name="sqrt">
@@ -993,21 +1149,28 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/sqrt.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(215, 215, 215);
+	border-radius: 2px;
+	background-color:rgb(252, 252, 252);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/sqrtd.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(232, 232, 232);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>√</string>
+    </property>
+    <property name="shortcut">
+     <string>S, Q, R, T</string>
     </property>
    </widget>
    <widget class="QPushButton" name="cos">
@@ -1024,21 +1187,28 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/cos.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(215, 215, 215);
+	border-radius: 2px;
+	background-color:rgb(252, 252, 252);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/cosd.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(232, 232, 232);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>cos</string>
+    </property>
+    <property name="shortcut">
+     <string>C, O, S</string>
     </property>
    </widget>
    <widget class="QPushButton" name="ln">
@@ -1055,21 +1225,28 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/ln.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(215, 215, 215);
+	border-radius: 2px;
+	background-color:rgb(252, 252, 252);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/lnd.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(232, 232, 232);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>ln</string>
+    </property>
+    <property name="shortcut">
+     <string>L, N</string>
     </property>
    </widget>
    <widget class="QPushButton" name="log">
@@ -1086,21 +1263,28 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/log.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(215, 215, 215);
+	border-radius: 2px;
+	background-color:rgb(252, 252, 252);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/logd.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(232, 232, 232);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>log</string>
+    </property>
+    <property name="shortcut">
+     <string>L, O, G</string>
     </property>
    </widget>
    <widget class="QPushButton" name="sin">
@@ -1117,21 +1301,28 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/sin.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(215, 215, 215);
+	border-radius: 2px;
+	background-color:rgb(252, 252, 252);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/sind.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(232, 232, 232);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>sin</string>
+    </property>
+    <property name="shortcut">
+     <string>S, I, N</string>
     </property>
    </widget>
    <widget class="Line" name="line">
@@ -1174,21 +1365,28 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/br_r.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(215, 215, 215);
+	border-radius: 2px;
+	background-color:rgb(252, 252, 252);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/br_rd.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(232, 232, 232);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>)</string>
+    </property>
+    <property name="shortcut">
+     <string>)</string>
     </property>
    </widget>
    <widget class="QPushButton" name="br_l">
@@ -1205,21 +1403,28 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	border: none;
-    qproperty-icon: url(&quot; &quot;); /* empty image */
-    qproperty-iconSize: 16px 16px; /* space for the background image */
-    background-image: url(:/Buttons/br_l.png);
-    background-repeat: no-repeat;
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(215, 215, 215);
+	border-radius: 2px;
+	background-color:rgb(252, 252, 252);
+	color: black;
 }
 
 QPushButton:pressed {
-	border: none;
-    background-image: url(:/Buttons/br_ld.png);
-    background-repeat: no-repeat;
-}</string>
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(232, 232, 232);
+	color: black;
+} </string>
     </property>
     <property name="text">
-     <string/>
+     <string>(</string>
+    </property>
+    <property name="shortcut">
+     <string>(</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="ResultDisplay">
@@ -1253,9 +1458,249 @@ QPushButton:pressed {
 	border:none;
 }</string>
     </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="placeholderText">
+     <string>= 0.00</string>
+    </property>
+   </widget>
+   <widget class="QCustomPlot" name="plot" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>8</y>
+      <width>593</width>
+      <height>593</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="y_min_box">
+    <property name="geometry">
+     <rect>
+      <x>4</x>
+      <y>720</y>
+      <width>88</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QDoubleSpinBox {
+	color : black;
+	background-color:white;
+}</string>
+    </property>
+    <property name="minimum">
+     <double>-1000000.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>1000000.000000000000000</double>
+    </property>
+    <property name="value">
+     <double>-5.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="x_max_box">
+    <property name="geometry">
+     <rect>
+      <x>96</x>
+      <y>682</y>
+      <width>88</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QDoubleSpinBox {
+	color : black;
+	background-color:white;
+}</string>
+    </property>
+    <property name="minimum">
+     <double>-1000000.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>1000000.000000000000000</double>
+    </property>
+    <property name="value">
+     <double>5.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="x_min_box">
+    <property name="geometry">
+     <rect>
+      <x>4</x>
+      <y>682</y>
+      <width>88</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QDoubleSpinBox {
+	color : black;
+	background-color:white;
+}</string>
+    </property>
+    <property name="minimum">
+     <double>-1000000.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>1000000.000000000000000</double>
+    </property>
+    <property name="value">
+     <double>-5.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="y_max_box">
+    <property name="geometry">
+     <rect>
+      <x>96</x>
+      <y>720</y>
+      <width>88</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QDoubleSpinBox {
+	color : black;
+	background-color:white;
+}</string>
+    </property>
+    <property name="minimum">
+     <double>-1000000.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>1000000.000000000000000</double>
+    </property>
+    <property name="value">
+     <double>5.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>8</x>
+      <y>666</y>
+      <width>58</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	color : black;
+}QLabel {
+	color : black;
+}</string>
+    </property>
+    <property name="text">
+     <string>x min</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>666</y>
+      <width>58</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	color : black;
+}</string>
+    </property>
+    <property name="text">
+     <string>x max</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>8</x>
+      <y>704</y>
+      <width>58</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	color : black;
+}QLabel {
+	color : black;
+}</string>
+    </property>
+    <property name="text">
+     <string>y min</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>704</y>
+      <width>58</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	color : black;
+}QLabel {
+	color : black;
+}</string>
+    </property>
+    <property name="text">
+     <string>y min</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="reset">
+    <property name="geometry">
+     <rect>
+      <x>208</x>
+      <y>667</y>
+      <width>57</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(215, 215, 215);
+	border-radius: 2px;
+	background-color:rgb(252, 252, 252);
+	color: black;
+}
+
+QPushButton:pressed {
+	border-style: solid;
+    	border-width: 1px;
+    	border-color: rgb(195, 195, 195);
+	border-radius: 2px;
+	background-color:rgb(232, 232, 232);
+	color: black;
+} </string>
+    </property>
+    <property name="text">
+     <string>reset</string>
+    </property>
+    <property name="shortcut">
+     <string>R</string>
+    </property>
    </widget>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QCustomPlot</class>
+   <extends>QWidget</extends>
+   <header>qcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

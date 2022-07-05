@@ -21,3 +21,7 @@ void validate_lyxems(char *input, int *code) {
         input += strlen(valid_input_tokens[i]);
     }
 }
+
+void validate_brackets(lyxems_t *lyxems, int lyxems_cnt, int *code) {
+    //
+}

@@ -1,7 +1,8 @@
 {
 	"makefile.extensionOutputFolder": "./.vscode",
 	"files.associations": {
-		"qmainwindow": "cpp"
+		"qmainwindow": "cpp",
+		"main.h": "c"
 	},
 	"C_Cpp.errorSquiggles": "Enabled"
 }

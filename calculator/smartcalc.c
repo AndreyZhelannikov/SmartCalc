@@ -20,6 +20,7 @@ double smart_calc(char *input, double x_value, int *code) {
     validate_lyxems(input, code);
     if (*code == OK) {
         int lyxems_cnt = input_string_converting(input, lyxems);
+        validate_brackets(&lyxems, lyxems_cnt, code);
 
         int polish_cnt = dijkstra_algorithm(lyxems, lyxems_cnt, polish);
 

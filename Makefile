@@ -46,10 +46,11 @@ UI_HEADER			=	ui_calculator.h
 RM					=	rm -f
 MK					=	mkdir -p
 
-all					:	$(TARGET) $(TEST_TARGET) gcov_report Makefile
+all					:	$(TARGET) #$(TEST_TARGET) gcov_report Makefile
 
 $(TARGET)			:	$(UI_HEADER) $(MOC_FILES) $(OBJ_DIR) $(OBJ_C) $(OBJ_CXX)
 	$(CXX) -o $(TARGET) $(OBJ_C) $(OBJ_CXX) $(LIBS)
+	./SmartCalc
 
 $(TEST_TARGET)		:	$(OBJ_DIR) $(TEST_OBJ) $(OBJ_C)
 	$(CC) -o $(TEST_TARGET) $(TEST_OBJ) $(OBJ_C) $(TEST_LIBS)

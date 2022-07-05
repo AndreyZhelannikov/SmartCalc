@@ -51,7 +51,7 @@ enum {
     INVALID_LYXEMS = 3,
 };
 
-double smart_calc(char *input, double x_value);
+double smart_calc(char *input, double x_value, int *code);
 
 double calculate_value(lyxems_t *lyxems, int lyxems_cnt);
 double do_operation(int tok, double a, double b);
@@ -84,8 +84,6 @@ int get_function(char *input);
 
 int dijkstra_algorithm(lyxems_t *lyxems, int lyxems_cnt, lyxems_t *polish);
 
-void validation(char *input, int *code);
-void validate_symbols(char *input, int *code);
 void validate_lyxems(char *input, int *code);
 
 #endif

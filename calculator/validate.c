@@ -1,10 +1,5 @@
 #include "main.h"
 
-void validation(char *input, int *code) {
-    //
-    validate_lyxems(input, code);
-}
-
 void validate_lyxems(char *input, int *code) {
     char valid_input_tokens[64][8] = {
         "+", "-", "*", "/", "=", "^", "mod", "cos", "sin", "tan", "acos", "asin", "atan", "sqrt", "ln", "log",

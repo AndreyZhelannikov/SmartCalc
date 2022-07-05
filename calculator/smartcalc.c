@@ -1,6 +1,6 @@
 #include "main.h"
 
-//void print_rectangle(int x, int y);
+// void print_rectangle(int x, int y);
 
 // int main(int argc, char **argv) {
 //     int code = 0;
@@ -12,33 +12,29 @@
 //     return 0;
 // }
 
-double smart_calc(char *input, double x_value) {
-    int code = OK;
+double smart_calc(char *input, double x_value, int *code) {
     double result = 0;
-    // char input[512] = {0};
     lyxems_t lyxems[512] = {0};
     lyxems_t polish[512] = {0};
 
-    // get_input_from_stdin(input, &code);
-    int lyxems_cnt = input_string_converting(input, lyxems);
+    validate_lyxems(input, code);
+    if (*code == OK) {
+        int lyxems_cnt = input_string_converting(input, lyxems);
 
-//    print_lyxems(lyxems, lyxems_cnt);
+        int polish_cnt = dijkstra_algorithm(lyxems, lyxems_cnt, polish);
 
-    int polish_cnt = dijkstra_algorithm(lyxems, lyxems_cnt, polish);
-
-//    print_lyxems(polish, polish_cnt);
-    for (int i = 0; i < lyxems_cnt; ++i) {
-        if (polish[i].token == PLUS_X) {
-            polish[i].token = NUMBER;
-            polish[i].number = x_value;
-        } else if (polish[i].token == MINUS_X) {
-            polish[i].token = NUMBER;
-            polish[i].number = -x_value;
+        for (int i = 0; i < lyxems_cnt; ++i) {
+            if (polish[i].token == PLUS_X) {
+                polish[i].token = NUMBER;
+                polish[i].number = x_value;
+            } else if (polish[i].token == MINUS_X) {
+                polish[i].token = NUMBER;
+                polish[i].number = -x_value;
+            }
         }
+        result = calculate_value(polish, polish_cnt);
     }
-    result = calculate_value(polish, polish_cnt);
     return result;
-    // printf("RESULT : %lf\n", result);
 }
 
 void print_lyxems(lyxems_t *lyxems, int len) {
@@ -106,33 +102,33 @@ void print_token_raw(int token) {
     if (token == SQRT) printf("SQRT");
 }
 
-//void handle_error(int code) {
-//    // system("clear");
-//    // printf("\033[%d;%dH", 2, 3);
-//    printf("=======================\n");
-//    printf("An error has occurred:\n");
-//    printf("%s", BHRED);
-//    // printf("\033[%d;%dH", 3, 3);
-//    if (code == INPUT_FAILURE) {
-//        printf("INPUT FAILURE\n");
-//    } else if (code == INPUT_IS_TOO_LARGE) {
-//        printf("INPUT IS TOO LARGE\n");
-//    } else if (code == INVALID_LYXEMS) {
-//        printf("INVALID LYXEMS\n");
-//    }
-//    // printf("\033[%d;%dH", 4, 3);
-//    printf("%s", CRESET);
-//    printf("code: %d\n", code);
-//    printf("=======================\n");
-//    // print_rectangle(25, 5);
-//}
+// void handle_error(int code) {
+//     // system("clear");
+//     // printf("\033[%d;%dH", 2, 3);
+//     printf("=======================\n");
+//     printf("An error has occurred:\n");
+//     printf("%s", BHRED);
+//     // printf("\033[%d;%dH", 3, 3);
+//     if (code == INPUT_FAILURE) {
+//         printf("INPUT FAILURE\n");
+//     } else if (code == INPUT_IS_TOO_LARGE) {
+//         printf("INPUT IS TOO LARGE\n");
+//     } else if (code == INVALID_LYXEMS) {
+//         printf("INVALID LYXEMS\n");
+//     }
+//     // printf("\033[%d;%dH", 4, 3);
+//     printf("%s", CRESET);
+//     printf("code: %d\n", code);
+//     printf("=======================\n");
+//     // print_rectangle(25, 5);
+// }
 
-//void print_rectangle(int x, int y) {
-//    setlocale(LC_CTYPE, "");
-//    printf("\033[%d;%dH", 0, 0);
-//    wprintf(L"%lc", 0x250C);
-//    for (int i = 0; i < x; ++i) wprintf(L"%lc", 0x2500);
-//    wprintf(L"%lc", 0x2510);
+// void print_rectangle(int x, int y) {
+//     setlocale(LC_CTYPE, "");
+//     printf("\033[%d;%dH", 0, 0);
+//     wprintf(L"%lc", 0x250C);
+//     for (int i = 0; i < x; ++i) wprintf(L"%lc", 0x2500);
+//     wprintf(L"%lc", 0x2510);
 
 //    for (int i = 2; i < y; ++i) {
 //        printf("\033[%d;%dH", i, 0);

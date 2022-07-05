@@ -8,8 +8,6 @@
 #include <string.h>
 #include <wchar.h>
 
-#include "colors.h"
-
 #define MAX_INPUT_LEN 256
 #define STRINGIFY(x) STRINGIFY2(x)
 #define STRINGIFY2(x) #x

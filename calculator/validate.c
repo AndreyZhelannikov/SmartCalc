@@ -1,22 +1,5 @@
 #include "main.h"
 
-void get_input_from_stdin(char *input, int *code) {
-    // Bracket validation
-    // fun() brackets validations
-    // binary operations validation
-    //
-    if (scanf("%" STRINGIFY(MAX_INPUT_LEN) "[^\n]s", input) == 1) {
-        if (strlen(input) > MAX_INPUT_LEN)
-            *code = INPUT_IS_TOO_LARGE;
-        else if (input[strlen(input) - 1] != '=')
-            *code = INVALID_LYXEMS;
-        else
-            validation(input, code);
-    } else {
-        *code = INPUT_FAILURE;
-    }
-}
-
 void validation(char *input, int *code) {
     //
     validate_lyxems(input, code);

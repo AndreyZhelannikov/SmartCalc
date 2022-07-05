@@ -1,10 +1,8 @@
 #include "calculator.h"
+
 #include "ui_calculator.h"
 
-Calculator::Calculator(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::Calculator)
-{
+Calculator::Calculator(QWidget *parent) : QMainWindow(parent), ui(new Ui::Calculator) {
     ui->setupUi(this);
 
     double x_min_default = -5;
@@ -17,13 +15,9 @@ Calculator::Calculator(QWidget *parent)
     ui->plot->yAxis->setRange(y_min_default, y_max_default);
 }
 
-Calculator::~Calculator()
-{
-    delete ui;
-}
+Calculator::~Calculator() { delete ui; }
 
-void Calculator::on_x_max_box_valueChanged(double arg1)
-{
+void Calculator::on_x_max_box_valueChanged(double arg1) {
     QCPRange range = ui->plot->xAxis->range();
     if (range.lower >= arg1) {
         ui->x_max_box->setValue(range.lower + 1);
@@ -33,9 +27,7 @@ void Calculator::on_x_max_box_valueChanged(double arg1)
     on_enter_clicked();
 }
 
-
-void Calculator::on_x_min_box_valueChanged(double arg1)
-{
+void Calculator::on_x_min_box_valueChanged(double arg1) {
     QCPRange range = ui->plot->xAxis->range();
     if (range.upper <= arg1) {
         ui->x_min_box->setValue(range.upper - 1);
@@ -45,9 +37,7 @@ void Calculator::on_x_min_box_valueChanged(double arg1)
     on_enter_clicked();
 }
 
-
-void Calculator::on_y_min_box_valueChanged(double arg1)
-{
+void Calculator::on_y_min_box_valueChanged(double arg1) {
     QCPRange range = ui->plot->yAxis->range();
     if (range.upper <= arg1) {
         ui->y_min_box->setValue(range.upper - 1);
@@ -57,9 +47,7 @@ void Calculator::on_y_min_box_valueChanged(double arg1)
     on_enter_clicked();
 }
 
-
-void Calculator::on_y_max_box_valueChanged(double arg1)
-{
+void Calculator::on_y_max_box_valueChanged(double arg1) {
     QCPRange range = ui->plot->yAxis->range();
     if (range.lower >= arg1) {
         ui->y_max_box->setValue(range.lower + 1);
@@ -69,9 +57,7 @@ void Calculator::on_y_max_box_valueChanged(double arg1)
     on_enter_clicked();
 }
 
-
-void Calculator::on_reset_clicked()
-{
+void Calculator::on_reset_clicked() {
     ui->Display->setText("");
     ui->ResultDisplay->setText("");
     ui->plot->clearGraphs();
@@ -81,4 +67,3 @@ void Calculator::on_reset_clicked()
     ui->y_min_box->setValue(-5);
     ui->y_max_box->setValue(5);
 }
-

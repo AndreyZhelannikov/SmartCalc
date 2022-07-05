@@ -2,27 +2,29 @@
 #define CALCULATOR_H
 
 #include <QMainWindow>
+
 #include "qcustomplot.h"
 extern "C" {
-#include "main.h"
+#include "calculator/main.h"
 }
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class Calculator; }
+namespace Ui {
+class Calculator;
+}
 QT_END_NAMESPACE
 
-class Calculator : public QMainWindow
-{
+class Calculator : public QMainWindow {
     Q_OBJECT
 
-public:
+   public:
     Calculator(QWidget *parent = nullptr);
     ~Calculator();
 
-private slots:
+   private slots:
     void on_one_clicked();
     void clicked_text_add(QString toADd);
-void on_three_clicked();
+    void on_three_clicked();
 
     void on_two_clicked();
 
@@ -84,7 +86,6 @@ void on_three_clicked();
 
     void on_y_max_box_valueChanged(double arg1);
 
-
     void on_mod_clicked();
 
     void on_pow_clicked();
@@ -93,8 +94,8 @@ void on_three_clicked();
 
     void on_reset_clicked();
 
-private:
+   private:
     Ui::Calculator *ui;
 };
 
-#endif // CALCULATOR_H
+#endif  // CALCULATOR_H

@@ -17,23 +17,26 @@ double smart_calc(char *input, double x_value, int *code) {
     lyxems_t lyxems[512] = {0};
     lyxems_t polish[512] = {0};
 
-    validate_lyxems(input, code);
+    // validate_lyxems(input, code);
     if (*code == OK) {
         int lyxems_cnt = input_string_converting(input, lyxems);
-        validate_brackets(&lyxems, lyxems_cnt, code);
+        // validate_brackets(lyxems, lyxems_cnt, code);
+        validate_binary(lyxems, lyxems_cnt, code);
+        // validate_numbers(lyxems, lyxems_cnt, code);
+        if (*code == OK) {
+            int polish_cnt = dijkstra_algorithm(lyxems, lyxems_cnt, polish);
 
-        int polish_cnt = dijkstra_algorithm(lyxems, lyxems_cnt, polish);
-
-        for (int i = 0; i < lyxems_cnt; ++i) {
-            if (polish[i].token == PLUS_X) {
-                polish[i].token = NUMBER;
-                polish[i].number = x_value;
-            } else if (polish[i].token == MINUS_X) {
-                polish[i].token = NUMBER;
-                polish[i].number = -x_value;
+            for (int i = 0; i < lyxems_cnt; ++i) {
+                if (polish[i].token == PLUS_X) {
+                    polish[i].token = NUMBER;
+                    polish[i].number = x_value;
+                } else if (polish[i].token == MINUS_X) {
+                    polish[i].token = NUMBER;
+                    polish[i].number = -x_value;
+                }
             }
+            result = calculate_value(polish, polish_cnt);
         }
-        result = calculate_value(polish, polish_cnt);
     }
     return result;
 }

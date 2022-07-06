@@ -86,5 +86,7 @@ int dijkstra_algorithm(lyxems_t *lyxems, int lyxems_cnt, lyxems_t *polish);
 
 void validate_lyxems(char *input, int *code);
 void validate_brackets(lyxems_t *lyxems, int lyxems_cnt, int *code);
+void validate_binary(lyxems_t *lyxems, int lyxems_cnt, int *code);
+void validate_numbers(lyxems_t *lyxems, int lyxems_cnt, int *code);
 
 #endif

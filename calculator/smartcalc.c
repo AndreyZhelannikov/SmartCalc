@@ -1,28 +1,16 @@
 #include "main.h"
 
-// void print_rectangle(int x, int y);
-
-// int main(int argc, char **argv) {
-//     int code = 0;
-
-//     smart_calc(argc, argv, &code);
-
-//     if (code != OK) handle_error(code);
-
-//     return 0;
-// }
-
-double smart_calc(char *input, double x_value, int *code) {
+double smart_calc(char *input, double x_value, int *code, int validation) {
     double result = 0;
     lyxems_t lyxems[512] = {0};
     lyxems_t polish[512] = {0};
-
-    // validate_lyxems(input, code);
     if (*code == OK) {
         int lyxems_cnt = input_string_converting(input, lyxems);
-        // validate_brackets(lyxems, lyxems_cnt, code);
-        validate_binary(lyxems, lyxems_cnt, code);
-        // validate_numbers(lyxems, lyxems_cnt, code);
+        if (validation) {
+            validate_brackets(lyxems, lyxems_cnt, code);
+            validate_binary(lyxems, lyxems_cnt, code);
+            validate_numbers_and_functions(lyxems, lyxems_cnt, code);
+        }
         if (*code == OK) {
             int polish_cnt = dijkstra_algorithm(lyxems, lyxems_cnt, polish);
 

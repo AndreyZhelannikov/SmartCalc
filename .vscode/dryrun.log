@@ -1,6 +1,20 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/andreyzhelannikov/Ihopethatislast'
-make: Nothing to be done for `all'.
- 
+/opt/homebrew/share/qt/libexec/uic calculator.ui -o ui_calculator.h
+/opt/homebrew/share/qt/libexec/moc -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -F/opt/homebrew/lib calculator.h -o moc_calculator.cpp
+/opt/homebrew/share/qt/libexec/moc -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -F/opt/homebrew/lib qcustomplot.h -o moc_qcustomplot.cpp
+mkdir -p ./objs
+gcc -c -std=c11 -Wall -Wextra  calculator/validate.c -o objs/validate.o
+gcc -c -std=c11 -Wall -Wextra  calculator/calc.c -o objs/calc.o
+gcc -c -std=c11 -Wall -Wextra  calculator/converting.c -o objs/converting.o
+gcc -c -std=c11 -Wall -Wextra  calculator/smartcalc.c -o objs/smartcalc.o
+g++ -c -std=c++17 -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -F/opt/homebrew/lib ./calculator.cpp -o objs/calculator.o
+g++ -c -std=c++17 -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -F/opt/homebrew/lib ./qcustomplot.cpp -o objs/qcustomplot.o
+g++ -c -std=c++17 -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -F/opt/homebrew/lib ./buttons_text_add_on_click.cpp -o objs/buttons_text_add_on_click.o
+g++ -c -std=c++17 -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -F/opt/homebrew/lib ./main.cpp -o objs/main.o
+g++ -c -std=c++17 -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -F/opt/homebrew/lib moc_calculator.cpp -o objs/moc_calculator.o
+g++ -c -std=c++17 -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -F/opt/homebrew/lib moc_qcustomplot.cpp -o objs/moc_qcustomplot.o
+g++ -o SmartCalc ./objs/validate.o ./objs/calc.o ./objs/converting.o ./objs/smartcalc.o ./objs/calculator.o ./objs/qcustomplot.o ./objs/buttons_text_add_on_click.o ./objs/main.o ./objs/moc_calculator.o ./objs/moc_qcustomplot.o -F/opt/homebrew/lib -framework QtWidgets -framework QtGui -framework AppKit -framework ImageIO -framework Metal -framework QtCore -framework DiskArbitration -framework IOKit -framework AGL -framework OpenGL
+./SmartCalc
 make: Leaving directory `/Users/andreyzhelannikov/Ihopethatislast'
  

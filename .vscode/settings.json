@@ -2,7 +2,27 @@
 	"makefile.extensionOutputFolder": "./.vscode",
 	"files.associations": {
 		"qmainwindow": "cpp",
-		"main.h": "c"
+		"main.h": "c",
+		"qscreen": "cpp",
+		"qtimer": "cpp",
+		"algorithm": "cpp",
+		"qstack": "cpp",
+		"qmultimap": "cpp",
+		"qmargins": "cpp",
+		"qpaintevent": "cpp",
+		"qstring": "cpp",
+		"qmouseevent": "cpp",
+		"qpointer": "cpp",
+		"qsharedpointer": "cpp",
+		"qvector": "cpp",
+		"qpainter": "cpp",
+		"qpainterpath": "cpp",
+		"qpixmap": "cpp",
+		"qwheelevent": "cpp",
+		"limits": "cpp",
+		"qobject": "cpp",
+		"qcache": "cpp",
+		"qdebug": "cpp"
 	},
 	"C_Cpp.errorSquiggles": "Enabled"
 }

@@ -3,20 +3,23 @@
         {
             "name": "Mac",
             "includePath": [
-                "${workspaceFolder}/**",
-                "/opt/homebrew/lib/QtWidgets.framework/Headers",
-                "/opt/homebrew/lib/QtGui.framework/Headers",
-                "/opt/homebrew/lib/QtCore.framework/Headers",
-                "/opt/homebrew/lib",
-                "/opt"
+                "${workspaceFolder}/**"
             ],
             "defines": [],
-            "macFrameworkPath": [],
+            "macFrameworkPath": [
+                "${workspaceFolder}/**"
+            ],
             "compilerPath": "/opt/homebrew/bin/gcc-11",
             "cStandard": "gnu17",
             "cppStandard": "gnu++17",
             "intelliSenseMode": "macos-gcc-arm64",
-            "configurationProvider": "ms-vscode.makefile-tools"
+            "configurationProvider": "ms-vscode.makefile-tools",
+            "compilerArgs": [],
+            "compileCommands": "build/compile_commands.json",
+            "browse": {
+                "path": []
+            },
+            "forcedInclude": []
         }
     ],
     "version": 4

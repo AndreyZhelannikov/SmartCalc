@@ -15,6 +15,7 @@ void Calculator::on_enter_clicked() {
     double y_min = ui->y_min_box->value();
     double y_max = ui->y_min_box->value();
 
+    int validation = 1;
     int code = 0;
     int graph = 0;
     int len = strlen(c_input);
@@ -26,7 +27,10 @@ void Calculator::on_enter_clicked() {
         int j = 0;
         for (double i = x_min; i <= x_max; i += (x_max - x_min) / DELTA) {
             x[j] = i;
-            y[j] = smart_calc(c_input, i, &code);
+            double value = smart_calc(c_input, i, &code, validation);
+            y[j] = value;
+            validation = 0;
+            qDebug() << y[j];
             if (code != 0) break;
             j++;
         }
@@ -39,7 +43,7 @@ void Calculator::on_enter_clicked() {
             ui->ResultDisplay->setText(" = ERROR ");
         }
     } else {
-        double result = smart_calc(c_input, 0, &code);
+        double result = smart_calc(c_input, 0, &code, 1);
         if (code == 0) {
             QString result_string = QString::number(result);
             ui->ResultDisplay->setText("= " + result_string);

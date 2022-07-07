@@ -35,17 +35,21 @@ void validate_brackets(lyxems_t *lyxems, int lyxems_cnt, int *code) {
 void validate_binary(lyxems_t *lyxems, int lyxems_cnt, int *code) {
     if (is_operator(lyxems[0].token)) *code = INVALID_LYXEMS;
     for (int i = 1; i < lyxems_cnt - 1; ++i) {
-        if (is_operator(lyxems[i].token) &&
-            (!is_number(lyxems[i + 1].token) || lyxems[i + 1].token == BRACKET_L ||
-             is_function(lyxems[i + 1].token) || is_number(lyxems[i - 1].token) ||
-             lyxems[i - 1].token == BRACKET_R))
-            *code = INVALID_LYXEMS;
+        int l = lyxems[i - 1].token;
+        int r = lyxems[i + 1].token;
+        if (is_operator(lyxems[i].token)) {
+            if (!(is_number(r) || r == BRACKET_L || is_function(r)) || !(is_number(l) || l == BRACKET_R))
+                *code = INVALID_LYXEMS;
+        }
     }
     if (is_operator(lyxems[lyxems_cnt - 1].token)) *code = INVALID_LYXEMS;
 }
 
-void validate_numbers(lyxems_t *lyxems, int lyxems_cnt, int *code) {
+void validate_numbers_and_functions(lyxems_t *lyxems, int lyxems_cnt, int *code) {
     for (int i = 0; i < lyxems_cnt - 1; ++i) {
         if (is_number(lyxems[i].token) && is_number(lyxems[i + 1].token)) *code = INVALID_LYXEMS;
+        if (is_function(lyxems[i].token) && !(lyxems[i + 1].token == BRACKET_L)) *code = INVALID_LYXEMS;
+        if (lyxems[i].token == BRACKET_L && lyxems[i + 1].token == BRACKET_R) *code = INVALID_LYXEMS;
     }
+    if (is_function(lyxems[lyxems_cnt - 1].token)) *code = INVALID_LYXEMS;
 }

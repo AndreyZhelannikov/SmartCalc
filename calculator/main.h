@@ -51,7 +51,7 @@ enum {
     INVALID_LYXEMS = 3,
 };
 
-double smart_calc(char *input, double x_value, int *code);
+double smart_calc(char *input, double x_value, int *code, int validation);
 
 double calculate_value(lyxems_t *lyxems, int lyxems_cnt);
 double do_operation(int tok, double a, double b);
@@ -62,14 +62,16 @@ void print_lyxems(lyxems_t *lyxems, int len);
 void print_token_raw(int token);
 void print_token(int token);
 
-void check_unary_operations(lyxems_t *lyxems, int *len);
+void check_unary_operations(lyxems_t *lyxems, int *lyxems_cnt);
+void check_unary_functions(lyxems_t *lyxems, int *lyxems_cnt);
 
 int is_number(int tok);
 int is_function(int tok);
 int is_unary_binary(int tok);
 int is_operator(int tok);
 
-void shift_left(lyxems_t *lyxems, int start, int *len);
+void shift_left(lyxems_t *lyxems, int start, int *lyxems_cnt);
+void shift_right(lyxems_t *lyxems, int start, int *lyxems_cnt);
 void manage_priorities(lyxems_t *lyxems, int lyxems_cnt);
 
 void get_input_from_stdin(char *input, int *code);
@@ -87,6 +89,6 @@ int dijkstra_algorithm(lyxems_t *lyxems, int lyxems_cnt, lyxems_t *polish);
 void validate_lyxems(char *input, int *code);
 void validate_brackets(lyxems_t *lyxems, int lyxems_cnt, int *code);
 void validate_binary(lyxems_t *lyxems, int lyxems_cnt, int *code);
-void validate_numbers(lyxems_t *lyxems, int lyxems_cnt, int *code);
+void validate_numbers_and_functions(lyxems_t *lyxems, int lyxems_cnt, int *code);
 
 #endif

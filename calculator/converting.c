@@ -12,6 +12,7 @@ int input_string_converting(char *data, lyxems_t *lyxems) {
         lyxems_cnt++;
     }
     check_unary_operations(lyxems, &lyxems_cnt);
+    check_unary_functions(lyxems, &lyxems_cnt);
 
     manage_priorities(lyxems, lyxems_cnt);
     return lyxems_cnt;
@@ -31,10 +32,26 @@ void manage_priorities(lyxems_t *lyxems, int lyxems_cnt) {
     }
 }
 
+void check_unary_functions(lyxems_t *lyxems, int *lyxems_cnt) {
+    for (int i = 1; i < *lyxems_cnt; ++i) {
+        int tok = lyxems[i].token;
+        if (is_function(tok)) {
+            if (is_unary_binary(lyxems[i - 1].token)) {
+                if (i == 1 || is_operator(lyxems[i - 2].token) || lyxems[i - 2].token == BRACKET_L) {
+                    i--;
+                    shift_right(lyxems, i, lyxems_cnt);
+                    lyxems[i].token = NUMBER;
+                    lyxems[i].number = 0;
+                }
+            }
+        }
+    }
+}
+
 void check_unary_operations(lyxems_t *lyxems, int *lyxems_cnt) {
     for (int i = 1; i < *lyxems_cnt; ++i) {
         if (is_number(lyxems[i].token) && is_unary_binary(lyxems[i - 1].token)) {
-            if (i == 1 || is_operator(lyxems[i - 2].token)) {
+            if (i == 1 || is_operator(lyxems[i - 2].token) || lyxems[i - 2].token == BRACKET_L) {
                 if (lyxems[i - 1].token == PLUS) {
                 } else if (lyxems[i - 1].token == MINUS) {
                     if (lyxems[i].token == NUMBER)
@@ -50,10 +67,17 @@ void check_unary_operations(lyxems_t *lyxems, int *lyxems_cnt) {
 }
 
 void shift_left(lyxems_t *lyxems, int start, int *lyxems_cnt) {
-    for (int i = start; i < *lyxems_cnt; ++i) {
+    for (int i = start + 1; i < *lyxems_cnt; ++i) {
         lyxems[i - 1] = lyxems[i];
     }
     *lyxems_cnt -= 1;
+}
+
+void shift_right(lyxems_t *lyxems, int start, int *lyxems_cnt) {
+    for (int i = *lyxems_cnt + 1; i >= start + 1; --i) {
+        lyxems[i] = lyxems[i - 1];
+    }
+    *lyxems_cnt += 1;
 }
 
 void string_to_lyxem(char *data, lyxems_t *lyxems) {

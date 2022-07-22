@@ -22,7 +22,8 @@
 		"limits": "cpp",
 		"qobject": "cpp",
 		"qcache": "cpp",
-		"qdebug": "cpp"
+		"qdebug": "cpp",
+		"qtabwidget": "cpp"
 	},
 	"C_Cpp.errorSquiggles": "Enabled"
 }

@@ -1,0 +1,3 @@
+\contentsline {section}{\numberline {1}brief introduction}{3}{}%
+\contentsline {section}{\numberline {2}functions and operators}{4}{}%
+\contentsline {section}{\numberline {3}plotter/grapher}{5}{}%

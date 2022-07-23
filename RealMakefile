@@ -12,12 +12,12 @@ EQ            = =
 
 ####### Compiler, tools and options
 
-CC            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
-CXX           = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
+CC            = gcc
+CXX           = g++
 DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -mmacosx-version-min=12 -Wall -Wextra -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -stdlib=libc++ -O2 -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -mmacosx-version-min=12 -Wall -Wextra -fPIC $(DEFINES)
-INCPATH       = -I. -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -Iobjs -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/Library/Frameworks/AGL.framework/Headers -Iui -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/Library/Frameworks/AGL.framework/Headers -I/opt/homebrew/share/qt/mkspecs/macx-clang -F/opt/homebrew/lib
+INCPATH       = -I. -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -Iqt_objs -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/Library/Frameworks/AGL.framework/Headers -Iui -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/Library/Frameworks/AGL.framework/Headers -I/opt/homebrew/share/qt/mkspecs/macx-clang -F/opt/homebrew/lib
 QMAKE         = /opt/homebrew/opt/qt/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = calculator1.0.0
-DISTDIR = /Users/andreyzhelannikov/Ihopethatislast/objs/calculator1.0.0
+DISTDIR = /Users/andreyzhelannikov/Ihopethatislast/qt_objs/calculator1.0.0
 LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -mmacosx-version-min=12 -Wl,-rpath,@executable_path/../Frameworks -Wl,-rpath,/opt/homebrew/lib
 LIBS          = $(SUBLIBS) -F/opt/homebrew/lib -framework QtWidgets -framework QtGui -framework AppKit -framework ImageIO -framework Metal -framework QtCore -framework DiskArbitration -framework IOKit -framework AGL -framework OpenGL   
@@ -48,7 +48,7 @@ STRIP         = strip
 
 ####### Output directory
 
-OBJECTS_DIR   = objs/
+OBJECTS_DIR   = qt_objs/
 
 ####### Files
 
@@ -60,21 +60,21 @@ SOURCES       = frontend/actions.cpp \
 		backend/converting.c \
 		backend/smartcalc.c \
 		backend/validate.c \
-		frontend/credit_debit.cpp objs/moc_qcustomplot.cpp \
-		objs/moc_calculator.cpp \
-		objs/moc_credit_debit.cpp
-OBJECTS       = objs/actions.o \
-		objs/calculator.o \
-		objs/main.o \
-		objs/qcustomplot.o \
-		objs/calc.o \
-		objs/converting.o \
-		objs/smartcalc.o \
-		objs/validate.o \
-		objs/credit_debit.o \
-		objs/moc_qcustomplot.o \
-		objs/moc_calculator.o \
-		objs/moc_credit_debit.o
+		frontend/credit_debit.cpp qt_objs/moc_qcustomplot.cpp \
+		qt_objs/moc_calculator.cpp \
+		qt_objs/moc_credit_debit.cpp
+OBJECTS       = qt_objs/actions.o \
+		qt_objs/calculator.o \
+		qt_objs/main.o \
+		qt_objs/qcustomplot.o \
+		qt_objs/calc.o \
+		qt_objs/converting.o \
+		qt_objs/smartcalc.o \
+		qt_objs/validate.o \
+		qt_objs/credit_debit.o \
+		qt_objs/moc_qcustomplot.o \
+		qt_objs/moc_calculator.o \
+		qt_objs/moc_credit_debit.o
 DIST          = /opt/homebrew/share/qt/mkspecs/features/spec_pre.prf \
 		/opt/homebrew/share/qt/mkspecs/features/device_config.prf \
 		/opt/homebrew/Cellar/qt/6.3.1_1/share/qt/mkspecs/common/unix.conf \
@@ -984,12 +984,6 @@ distclean: clean
 
 ####### Sub-libraries
 
-test:
-	make -C .. test
-
-gcov_report:
-	make -C .. gcov_report
-
 xcodeproj:
 	@$(QMAKE) -spec macx-xcode "$(EXPORT__PRO_FILE_)"
 
@@ -1003,24 +997,24 @@ benchmark: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_predefs_make_all: objs/moc_predefs.h
+compiler_moc_predefs_make_all: qt_objs/moc_predefs.h
 compiler_moc_predefs_clean:
-	-$(DEL_FILE) objs/moc_predefs.h
-objs/moc_predefs.h: /opt/homebrew/share/qt/mkspecs/features/data/dummy.cpp
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -O2 -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -mmacosx-version-min=12 -Wall -Wextra -dM -E -o objs/moc_predefs.h /opt/homebrew/share/qt/mkspecs/features/data/dummy.cpp
+	-$(DEL_FILE) qt_objs/moc_predefs.h
+qt_objs/moc_predefs.h: /opt/homebrew/share/qt/mkspecs/features/data/dummy.cpp
+	g++ -pipe -stdlib=libc++ -O2 -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -mmacosx-version-min=12 -Wall -Wextra -dM -E -o qt_objs/moc_predefs.h /opt/homebrew/share/qt/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: objs/moc_qcustomplot.cpp objs/moc_calculator.cpp objs/moc_credit_debit.cpp
+compiler_moc_header_make_all: qt_objs/moc_qcustomplot.cpp qt_objs/moc_calculator.cpp qt_objs/moc_credit_debit.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) objs/moc_qcustomplot.cpp objs/moc_calculator.cpp objs/moc_credit_debit.cpp
-objs/moc_qcustomplot.cpp: frontend/qcustomplot.h \
+	-$(DEL_FILE) qt_objs/moc_qcustomplot.cpp qt_objs/moc_calculator.cpp qt_objs/moc_credit_debit.cpp
+qt_objs/moc_qcustomplot.cpp: frontend/qcustomplot.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/qmath.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/qnumeric.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QtNumeric \
-		objs/moc_predefs.h \
+		qt_objs/moc_predefs.h \
 		/opt/homebrew/share/qt/libexec/moc
-	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/andreyzhelannikov/Ihopethatislast/objs/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/andreyzhelannikov/Ihopethatislast -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.1.6/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib frontend/qcustomplot.h -o objs/moc_qcustomplot.cpp
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/andreyzhelannikov/Ihopethatislast/qt_objs/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/andreyzhelannikov/Ihopethatislast -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.1.6/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib frontend/qcustomplot.h -o qt_objs/moc_qcustomplot.cpp
 
-objs/moc_calculator.cpp: frontend/calculator.h \
+qt_objs/moc_calculator.cpp: frontend/calculator.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QMainWindow \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		frontend/qcustomplot.h \
@@ -1028,16 +1022,16 @@ objs/moc_calculator.cpp: frontend/calculator.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/qnumeric.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QtNumeric \
 		backend/smartcalc.h \
-		objs/moc_predefs.h \
+		qt_objs/moc_predefs.h \
 		/opt/homebrew/share/qt/libexec/moc
-	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/andreyzhelannikov/Ihopethatislast/objs/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/andreyzhelannikov/Ihopethatislast -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.1.6/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib frontend/calculator.h -o objs/moc_calculator.cpp
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/andreyzhelannikov/Ihopethatislast/qt_objs/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/andreyzhelannikov/Ihopethatislast -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.1.6/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib frontend/calculator.h -o qt_objs/moc_calculator.cpp
 
-objs/moc_credit_debit.cpp: frontend/credit_debit.h \
+qt_objs/moc_credit_debit.cpp: frontend/credit_debit.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qdialog.h \
-		objs/moc_predefs.h \
+		qt_objs/moc_predefs.h \
 		/opt/homebrew/share/qt/libexec/moc
-	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/andreyzhelannikov/Ihopethatislast/objs/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/andreyzhelannikov/Ihopethatislast -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.1.6/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib frontend/credit_debit.h -o objs/moc_credit_debit.cpp
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/andreyzhelannikov/Ihopethatislast/qt_objs/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/andreyzhelannikov/Ihopethatislast -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.1.6/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib frontend/credit_debit.h -o qt_objs/moc_credit_debit.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1070,7 +1064,7 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-objs/actions.o: frontend/actions.cpp frontend/calculator.h \
+qt_objs/actions.o: frontend/actions.cpp frontend/calculator.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QMainWindow \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		frontend/qcustomplot.h \
@@ -1079,9 +1073,9 @@ objs/actions.o: frontend/actions.cpp frontend/calculator.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QtNumeric \
 		backend/smartcalc.h \
 		ui/ui_calculator.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/actions.o frontend/actions.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qt_objs/actions.o frontend/actions.cpp
 
-objs/calculator.o: frontend/calculator.cpp frontend/calculator.h \
+qt_objs/calculator.o: frontend/calculator.cpp frontend/calculator.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QMainWindow \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		frontend/qcustomplot.h \
@@ -1093,9 +1087,9 @@ objs/calculator.o: frontend/calculator.cpp frontend/calculator.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qdialog.h \
 		ui/ui_calculator.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/calculator.o frontend/calculator.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qt_objs/calculator.o frontend/calculator.cpp
 
-objs/main.o: frontend/main.cpp frontend/calculator.h \
+qt_objs/main.o: frontend/main.cpp frontend/calculator.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QMainWindow \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		frontend/qcustomplot.h \
@@ -1105,40 +1099,40 @@ objs/main.o: frontend/main.cpp frontend/calculator.h \
 		backend/smartcalc.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QApplication \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qapplication.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/main.o frontend/main.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qt_objs/main.o frontend/main.cpp
 
-objs/qcustomplot.o: frontend/qcustomplot.cpp frontend/qcustomplot.h \
+qt_objs/qcustomplot.o: frontend/qcustomplot.cpp frontend/qcustomplot.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/qmath.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/qnumeric.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QtNumeric
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/qcustomplot.o frontend/qcustomplot.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qt_objs/qcustomplot.o frontend/qcustomplot.cpp
 
-objs/calc.o: backend/calc.c backend/smartcalc.h
-	$(CC) -c $(CFLAGS) $(INCPATH) -o objs/calc.o backend/calc.c
+qt_objs/calc.o: backend/calc.c backend/smartcalc.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o qt_objs/calc.o backend/calc.c
 
-objs/converting.o: backend/converting.c backend/smartcalc.h
-	$(CC) -c $(CFLAGS) $(INCPATH) -o objs/converting.o backend/converting.c
+qt_objs/converting.o: backend/converting.c backend/smartcalc.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o qt_objs/converting.o backend/converting.c
 
-objs/smartcalc.o: backend/smartcalc.c backend/smartcalc.h
-	$(CC) -c $(CFLAGS) $(INCPATH) -o objs/smartcalc.o backend/smartcalc.c
+qt_objs/smartcalc.o: backend/smartcalc.c backend/smartcalc.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o qt_objs/smartcalc.o backend/smartcalc.c
 
-objs/validate.o: backend/validate.c backend/smartcalc.h
-	$(CC) -c $(CFLAGS) $(INCPATH) -o objs/validate.o backend/validate.c
+qt_objs/validate.o: backend/validate.c backend/smartcalc.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o qt_objs/validate.o backend/validate.c
 
-objs/credit_debit.o: frontend/credit_debit.cpp frontend/credit_debit.h \
+qt_objs/credit_debit.o: frontend/credit_debit.cpp frontend/credit_debit.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qdialog.h \
 		ui/ui_credit_debit.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/credit_debit.o frontend/credit_debit.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qt_objs/credit_debit.o frontend/credit_debit.cpp
 
-objs/moc_qcustomplot.o: objs/moc_qcustomplot.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/moc_qcustomplot.o objs/moc_qcustomplot.cpp
+qt_objs/moc_qcustomplot.o: qt_objs/moc_qcustomplot.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qt_objs/moc_qcustomplot.o qt_objs/moc_qcustomplot.cpp
 
-objs/moc_calculator.o: objs/moc_calculator.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/moc_calculator.o objs/moc_calculator.cpp
+qt_objs/moc_calculator.o: qt_objs/moc_calculator.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qt_objs/moc_calculator.o qt_objs/moc_calculator.cpp
 
-objs/moc_credit_debit.o: objs/moc_credit_debit.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/moc_credit_debit.o objs/moc_credit_debit.cpp
+qt_objs/moc_credit_debit.o: qt_objs/moc_credit_debit.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qt_objs/moc_credit_debit.o qt_objs/moc_credit_debit.cpp
 
 ####### Install
 

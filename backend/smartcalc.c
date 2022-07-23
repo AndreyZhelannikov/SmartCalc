@@ -30,70 +30,70 @@ double smart_calc(char *input, double x_value, int *code, int validation, int gr
     return result;
 }
 
-void print_lyxems(lyxems_t *lyxems, int len) {
-    for (int i = 0; i < len; ++i) {
-        if (lyxems[i].token == NUMBER) {
-            printf(" %lf ", lyxems[i].number);
-        } else {
-            print_token(lyxems[i].token);
-        }
-    }
-    printf("\n");
-}
+// void print_lyxems(lyxems_t *lyxems, int len) {
+//     for (int i = 0; i < len; ++i) {
+//         if (lyxems[i].token == NUMBER) {
+//             printf(" %lf ", lyxems[i].number);
+//         } else {
+//             print_token(lyxems[i].token);
+//         }
+//     }
+//     printf("\n");
+// }
 
-void print_token(int token) {
-    if (token == -1) printf("ERROR");
-    if (token == NUMBER) printf("NUMBER");
-    if (token == PLUS_X) printf("x");
-    if (token == MINUS_X) printf("~x");
-    if (token == PLUS) printf("+");
-    if (token == MINUS) printf("-");
-    if (token == MUL) printf("*");
-    if (token == DIV) printf("/");
-    if (token == POW) printf("^");
-    if (token == MOD) printf("mod");
-    if (token == UNARY_MINUS) printf("~");
-    if (token == UNARY_PLUS) printf("±");
-    if (token == EQ) printf("=");
-    if (token == BRACKET_L) printf("(");
-    if (token == BRACKET_R) printf(")");
-    if (token == LN) printf("ln");
-    if (token == COS) printf("cos");
-    if (token == SIN) printf("sin");
-    if (token == TAN) printf("tan");
-    if (token == LOG) printf("log");
-    if (token == ACOS) printf("acos");
-    if (token == ASIN) printf("asin");
-    if (token == ATAN) printf("atan");
-    if (token == SQRT) printf("sqrt");
-}
+// void print_token(int token) {
+//     if (token == -1) printf("ERROR");
+//     if (token == NUMBER) printf("NUMBER");
+//     if (token == PLUS_X) printf("x");
+//     if (token == MINUS_X) printf("~x");
+//     if (token == PLUS) printf("+");
+//     if (token == MINUS) printf("-");
+//     if (token == MUL) printf("*");
+//     if (token == DIV) printf("/");
+//     if (token == POW) printf("^");
+//     if (token == MOD) printf("mod");
+//     if (token == UNARY_MINUS) printf("~");
+//     if (token == UNARY_PLUS) printf("±");
+//     if (token == EQ) printf("=");
+//     if (token == BRACKET_L) printf("(");
+//     if (token == BRACKET_R) printf(")");
+//     if (token == LN) printf("ln");
+//     if (token == COS) printf("cos");
+//     if (token == SIN) printf("sin");
+//     if (token == TAN) printf("tan");
+//     if (token == LOG) printf("log");
+//     if (token == ACOS) printf("acos");
+//     if (token == ASIN) printf("asin");
+//     if (token == ATAN) printf("atan");
+//     if (token == SQRT) printf("sqrt");
+// }
 
-void print_token_raw(int token) {
-    if (token == -1) printf("ERROR");
-    if (token == NUMBER) printf("NUMBER");
-    if (token == PLUS_X) printf("PLUS_X");
-    if (token == MINUS_X) printf("MINUS_X");
-    if (token == PLUS) printf("PLUS");
-    if (token == MINUS) printf("MINUS");
-    if (token == MUL) printf("MUL");
-    if (token == DIV) printf("DIV");
-    if (token == POW) printf("POW");
-    if (token == MOD) printf("MOD");
-    if (token == UNARY_MINUS) printf("UNARY_MINUS");
-    if (token == UNARY_PLUS) printf("UNARY_PLUS");
-    if (token == EQ) printf("EQ");
-    if (token == BRACKET_L) printf("BRACKET_L");
-    if (token == BRACKET_R) printf("BRACKET_R");
-    if (token == LN) printf("LN");
-    if (token == COS) printf("COS");
-    if (token == SIN) printf("SIN");
-    if (token == TAN) printf("TAN");
-    if (token == LOG) printf("LOG");
-    if (token == ACOS) printf("ACOS");
-    if (token == ASIN) printf("ASIN");
-    if (token == ATAN) printf("ATAN");
-    if (token == SQRT) printf("SQRT");
-}
+// void print_token_raw(int token) {
+//     if (token == -1) printf("ERROR");
+//     if (token == NUMBER) printf("NUMBER");
+//     if (token == PLUS_X) printf("PLUS_X");
+//     if (token == MINUS_X) printf("MINUS_X");
+//     if (token == PLUS) printf("PLUS");
+//     if (token == MINUS) printf("MINUS");
+//     if (token == MUL) printf("MUL");
+//     if (token == DIV) printf("DIV");
+//     if (token == POW) printf("POW");
+//     if (token == MOD) printf("MOD");
+//     if (token == UNARY_MINUS) printf("UNARY_MINUS");
+//     if (token == UNARY_PLUS) printf("UNARY_PLUS");
+//     if (token == EQ) printf("EQ");
+//     if (token == BRACKET_L) printf("BRACKET_L");
+//     if (token == BRACKET_R) printf("BRACKET_R");
+//     if (token == LN) printf("LN");
+//     if (token == COS) printf("COS");
+//     if (token == SIN) printf("SIN");
+//     if (token == TAN) printf("TAN");
+//     if (token == LOG) printf("LOG");
+//     if (token == ACOS) printf("ACOS");
+//     if (token == ASIN) printf("ASIN");
+//     if (token == ATAN) printf("ATAN");
+//     if (token == SQRT) printf("SQRT");
+// }
 
 // void handle_error(int code) {
 //     // system("clear");

@@ -12,8 +12,8 @@ void Calculator::on_enter_clicked() {
 
     double x_min = ui->x_min_box->value();
     double x_max = ui->x_max_box->value();
-    double y_min = ui->y_min_box->value();
-    double y_max = ui->y_min_box->value();
+    // double y_min = ui->y_min_box->value();
+    // double y_max = ui->y_min_box->value();
 
     int validation = 1;
     int code = 0;

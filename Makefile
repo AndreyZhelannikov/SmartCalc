@@ -16,8 +16,8 @@ CALCULATOR_DIR 		= 	./backend
 OBJ_DIR				=	./objs
 GCOV_OBJ_DIR		=	./gcov_objs
 
-SRC_C 				:=	$(shell find $(CALCULATOR_DIR) -name "*.c")
-TEST_SRC	 		:=	$(shell find $(TEST_DIR) -name "*.c")
+SRC_C 				:=	$(shell find $(CALCULATOR_DIR) -maxdepth 1 -name "*.c")
+TEST_SRC	 		:=	$(shell find $(TEST_DIR) -maxdepth 1 -name "*.c")
 
 OBJ_C 				=	$(addprefix $(OBJ_DIR)/, $(notdir $(SRC_C:.c=.o)))
 GCOV_OBJ_C			=	$(addprefix $(GCOV_OBJ_DIR)/, $(notdir $(SRC_C:.c=.o)))
@@ -33,7 +33,8 @@ COPY_FILE     		=	cp -f
 
 .DEFAULT_GOAL := all
 
-all: 
+all: $(OBJ_DIR)
+	$(MAKE) -f $(QMAKEFILE)
 
 %: $(OBJ_DIR)
 	@$(MAKE) -f $(QMAKEFILE) $@

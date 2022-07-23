@@ -1,5 +1,5 @@
-#ifndef ABOBA
-#define ABOBA
+#ifndef BACKEND_SMARTCALC_H_
+#define BACKEND_SMARTCALC_H_
 
 #include <locale.h>
 #include <math.h>
@@ -97,4 +97,5 @@ void credit_calculator(double *input, double *output, double *m_payments, int *c
 int check_valid_credit(const double *input);
 double differentiated_credit_m(const double *input, int m);
 void annuity_credit(double *input, double *output);
-#endif
+
+#endif  // BACKEND_SMARTCALC_H_

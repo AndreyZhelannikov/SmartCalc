@@ -6,12 +6,14 @@ CONFIG += c c++17
 
 MAKEFILE = RealMakefile
 
-OBJECTS_DIR= objs
-MOC_DIR= objs
-#RCC_DIR = objs
+OBJECTS_DIR= qt_objs
+MOC_DIR= qt_objs
+#RCC_DIR = qt_objs
 UI_DIR = ui
 DESTDIR= .
 
+QMAKE_CC = gcc
+QMAKE_CXX = g++
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -38,10 +40,10 @@ HEADERS += \
 FORMS += ui/calculator.ui \
 	ui/credit_debit.ui
 
-QMAKE_EXTRA_TARGETS += test gcov_report
-test.commands = make -C .. test
-gcov_report.commands = make -C .. gcov_report
-clean.commands += make -C .. clean
+#QMAKE_EXTRA_TARGETS += test gcov_report
+#test.commands = make -C .. test
+#gcov_report.commands = make -C .. gcov_report
+#clean.commands += make -C .. clean
 
 
 # Default rules for deployment.

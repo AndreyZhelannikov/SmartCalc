@@ -73,7 +73,6 @@ void Calculator::on_cd_clicked() {
     credit_debit credit_debit;
     QPoint p = Calculator::pos();
     credit_debit.move(p.x() + 600, p.y() + 0);
-    QRect r;
     credit_debit.setModal(true);
     credit_debit.exec();
 }

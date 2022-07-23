@@ -1,5 +1,5 @@
-#ifndef CALCULATOR_H
-#define CALCULATOR_H
+#ifndef FRONTEND_CALCULATOR_H_
+#define FRONTEND_CALCULATOR_H_
 
 #include <QMainWindow>
 
@@ -100,4 +100,4 @@ class Calculator : public QMainWindow {
     Ui::Calculator *ui;
 };
 
-#endif  // CALCULATOR_H
+#endif  // FRONTEND_CALCULATOR_H_
